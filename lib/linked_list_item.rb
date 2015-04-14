@@ -7,7 +7,8 @@ class LinkedListItem
   end
 
   def === (other)
-    self == other
+    #def <=> (other)
+    #self.object_id == other.object_id
     self.equal? other
   end
 
@@ -27,10 +28,19 @@ class LinkedListItem
   end
 
   def <=> other
-    # return (self <=> other) < 1
-    self.payload <=> other.payload
+    if self.payload.class == other.payload.class
+      self.payload <=> other.payload
     # compare the size of one over the other?
+    else
+      self.payload.class.to_s <=> other.payload.class.to_s
+    end
   end
+
+  #self.payload.class
+  ##assign a number to each class
+  #self.payload 
+
+
 
 
 end
