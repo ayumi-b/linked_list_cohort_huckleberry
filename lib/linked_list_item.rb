@@ -4,19 +4,33 @@ class LinkedListItem
 
   def initialize(payload)
     @payload = payload
-    #@next_item = n
+  end
+
+  def === (other)
+    self == other
+    self.equal? other
   end
 
   def next_item=(next_item)
-    @next_item = next_item
     raise ArgumentError if next_item == self
+    # above works as a guard to check if valid
+    @next_item= next_item
   end
 
   def last?
-    if next_item == nil
-      @last = true
-    else
-      @last = false
-    end
+    #if next_item == nil
+      #@last = true
+    #else
+      #@last = false
+    #end
+    next_item.nil?
   end
+
+  def <=> other
+    # return (self <=> other) < 1
+    self.payload <=> other.payload
+    # compare the size of one over the other?
+  end
+
+
 end
