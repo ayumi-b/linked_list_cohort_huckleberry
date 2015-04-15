@@ -1,8 +1,15 @@
+require_relative 'linked_list_item'
+
 class LinkedList
+  attr_reader :size
+
+  def initialize
+    @size = 0
+  end
 
   def get(nth_item)
-    raise IndexError if nth_item < 0 || @first_item == nil
-    
+    raise IndexError if nth_item < 0 || nth_item > @size 
+
     if nth_item == 0
       @first_item.payload
     else
@@ -24,6 +31,7 @@ class LinkedList
       @last_item.next_item = LinkedListItem.new(item)
       @last_item = @last_item.next_item
     end
+      @size+= 1
   end
 end
 
