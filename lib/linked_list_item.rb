@@ -38,7 +38,16 @@ class LinkedListItem
 
   #self.payload.class
   ##assign a number to each class
-  #self.payload 
+  #self.payload
+  #if self.payload.is_a? Symbol
+  #1
+  #elsif self.payload.is_a? Fixnum
+  #-1
+  #else
+  #if other.payload.is_a? Symbol
+  #-1 
+  #else
+  #1
 
 
 
