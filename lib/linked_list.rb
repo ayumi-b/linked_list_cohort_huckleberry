@@ -1,6 +1,8 @@
 class LinkedList
 
   def get(nth_item)
+    raise IndexError if nth_item < 0 || @first_item == nil
+    
     if nth_item == 0
       @first_item.payload
     else
