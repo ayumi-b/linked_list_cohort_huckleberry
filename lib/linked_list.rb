@@ -1,13 +1,13 @@
 require_relative 'linked_list_item'
 
 class LinkedList
-  attr_accessor :size, :first_item, :last_item, :to_s
+  attr_accessor :size, :first_item, :last_item
 
   def initialize(*payload)  #*args is always an array
     @size = 0
     payload.each { |payload| push(payload)}
     #if payload[0]
-      #lli = LinkedListItem.new(payload[0])
+      #lli = LinkedListItem.new(payload)
       #@first_item = lli
       #@current_item = lli
       #while payload[number]
@@ -20,6 +20,13 @@ class LinkedList
   def [](index)
     get(index)
   end
+
+  def []=(index, payload)
+    tempVal = @first_item
+    index.times{ |tempVal| tempVal.next_item }
+    tempVal.payload = payload
+  end
+
 
   def get(index)
     raise IndexError if index < 0 || index > @size
