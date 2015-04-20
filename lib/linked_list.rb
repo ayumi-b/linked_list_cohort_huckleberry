@@ -76,6 +76,7 @@ class LinkedList
     #end
   #end
 
+  #below: refactored in class
   def to_s
     str = "| "
     current_item = @first_item
@@ -93,9 +94,13 @@ class LinkedList
     get(payload)
   end
 
+  #this seems to work, but would it be better long way?
   def []=(index, payload)
     get(index).replace payload
   end
+
+
+
   #def []=(index, data)
       #current_node = @first_item
       #index.times { current_node=current_node.next_item }
@@ -109,7 +114,7 @@ class LinkedList
     #end
     #tempVal.payload = payload
   #end
-  #
+  
   def delete(index)
     raise IndexError if @first_item.nil?
     current_node = @first_item
@@ -127,6 +132,6 @@ class LinkedList
     #if index == 0
       #@first_item = @first_item.next_item
     #end
-    #@size -= 1   
+    #@size -= 1 
   #end
 end
