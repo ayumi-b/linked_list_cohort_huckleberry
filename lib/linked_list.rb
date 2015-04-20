@@ -8,7 +8,7 @@ class LinkedList
     payload.each {|payload| push(payload)}
   end
 
-  def get(index)
+  def get(index)  #look up Eliza's github here for get_item refactor
   raise IndexError if index < 0 || index > @size
     if index == 0
     @first_item.payload
@@ -19,7 +19,14 @@ class LinkedList
     end
   end
 
-  def index(payload)
+  #def get(index)
+    #get_item(index).payload
+  #end
+  #alias [] get
+  #does the same this as the [] method
+
+
+  def index(value)
   end
 
   def push(payload)
@@ -53,8 +60,8 @@ class LinkedList
     str
   end
 
-  def [](payload)
-    get(payload)
+  def [](index)
+    get(index)
   end
 
   #this seems to work, but would it be better long way?
@@ -63,11 +70,12 @@ class LinkedList
   #end
 
 
-  def []=(index, new_payload)
+  def []=(index, new_payload)  #check Eliza's github
       current_node = @first_item
       index.times { current_node=current_node.next_item }
-  current_node.payload = new_payload
+      current_node.payload = new_payload
   end
+
 
   def delete(index)
     raise IndexError if @first_item.nil?
