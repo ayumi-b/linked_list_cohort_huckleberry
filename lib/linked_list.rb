@@ -1,67 +1,65 @@
 require_relative 'linked_list_item'
 
 class LinkedList
-  attr_accessor :size, :first_item, :last_item
+  attr_accessor :size, :first_item, :last, :payload
 
   def initialize(*payload)  #*args is always an array
     @size = 0
-    payload.each { |payload| push(payload)}
-    #if payload[0]
-      #lli = LinkedListItem.new(payload)
-      #@first_item = lli
-      #@current_item = lli
-      #while payload[number]
-        #llin = LinkedListItem.new(payload[number])
-        #@last_item.next_item = llin
-        #@last_item = @last_item.next_item
-        #@size += 1
+      payload.each {|payload| push(payload)}
   end
-
-  def [](index)
-    get(index)
-  end
-
-  def []=(index, payload)
-    tempVal = @first_item
-    index.times{ |tempVal| tempVal.next_item }
-    tempVal.payload = payload
-  end
-
 
   def get(index)
-    raise IndexError if index < 0 || index > @size
-
+  raise IndexError if index < 0 || index > @size
     if index == 0
-      @first_item.payload
-    else
-      current_node = @first_item
-      index.times do
-        current_node = current_node.next_item
-      end
-      current_node.payload
+    @first_item.payload
+  else
+    current_node = @first_item
+    index.times { current_node = current_node.next_item }
+    current_node.payload
     end
   end
+
+  def index(payload)
+  end
+
+  #def get(index)
+    #raise IndexError if index < 0 || index > @size
+    #if index == 0
+      ##@first_item.payload
+      #@first_item = current_node.next_item
+    #elsif index > 0
+     #(index - 1).times {current_node = current_node.next_item }
+     #current_node.next_item = current_node.next_item.next_item
+    #end
+    #@size -= 1
+      ##current_node = @first_item
+      ##index.times do
+        ##current_node = current_node.next_item
+        ##raise IndexError if current_node.nil?
+      ##end
+      ##current_node.payload
+    ##end
+    ##raise IndexError if @first_item.nil?
+    ##current_node = @first_item
+  #end
 
   def push(payload)
     new_item = LinkedListItem.new(payload)
     if @first_item.nil?
       @first_item = new_item
     else
-      #last_item = @first_item
-      #until last_item.last?
-      @last_item.next_item = new_item
+       @last_item.next_item = new_item
     end
     @last_item = new_item
     @size+= 1
   end
-  
 
   def last
     unless @last_item.nil?
       @last_item.payload
     end
-
   end
+
   #
   #def to_s
     #string = ""
@@ -91,6 +89,44 @@ class LinkedList
     str
   end
 
+  def [](payload)
+    get(payload)
+  end
+
+  def []=(index, payload)
+    get(index).replace payload
+  end
+  #def []=(index, data)
+      #current_node = @first_item
+      #index.times { current_node=current_node.next_item }
+      #current_node = data.to_s
+  #end
+
+  #def []=(index, payload)
+    #tempVal = @first_item
+    #index.times do
+      #tempVal = tempVal.next_item
+    #end
+    #tempVal.payload = payload
+  #end
+  #
+  def delete(index)
+    raise IndexError if @first_item.nil?
+    current_node = @first_item
+    if index > 0
+     (index - 1).times {current_node = current_node.next_item }
+      current_node.next_item = current_node.next_item.next_item
+    elsif index <= 0
+      @first_item = current_node.next_item
+    end
+    @size -= 1
+  end
+
+  #def delete(index)
+    #raise IndexError if @first_item.nil?
+    #if index == 0
+      #@first_item = @first_item.next_item
+    #end
+    #@size -= 1   
+  #end
 end
-
-
