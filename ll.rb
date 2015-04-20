@@ -15,7 +15,7 @@ endPoint = " -> nil"
 if
   payloads.size > 0
   itemize = payloads.map { |payloads| payloads.inspect }
-  print "* -> " + itemize.join(pointer) + " -> nil"
+  print arrow + itemize.join(pointer) + endPoint
 else
   print "* -> nil"
 end
