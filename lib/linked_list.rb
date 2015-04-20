@@ -5,7 +5,7 @@ class LinkedList
 
   def initialize(*payload)  #*args is always an array
     @size = 0
-      payload.each {|payload| push(payload)}
+    payload.each {|payload| push(payload)}
   end
 
   def get(index)
@@ -21,27 +21,6 @@ class LinkedList
 
   def index(payload)
   end
-
-  #def get(index)
-    #raise IndexError if index < 0 || index > @size
-    #if index == 0
-      ##@first_item.payload
-      #@first_item = current_node.next_item
-    #elsif index > 0
-     #(index - 1).times {current_node = current_node.next_item }
-     #current_node.next_item = current_node.next_item.next_item
-    #end
-    #@size -= 1
-      ##current_node = @first_item
-      ##index.times do
-        ##current_node = current_node.next_item
-        ##raise IndexError if current_node.nil?
-      ##end
-      ##current_node.payload
-    ##end
-    ##raise IndexError if @first_item.nil?
-    ##current_node = @first_item
-  #end
 
   def push(payload)
     new_item = LinkedListItem.new(payload)
@@ -59,22 +38,6 @@ class LinkedList
       @last_item.payload
     end
   end
-
-  #
-  #def to_s
-    #string = ""
-    #if @size == 0
-      #"| |"
-    #elsif @size == 1
-      #"| #{@first_item.payload} |"
-    #else
-      #(@size - 1).times do |i|
-        #string << "#{get(i)}, "
-      #end
-      #string << "#{@last_item.payload}"
-      #"| #{string} |"
-    #end
-  #end
 
   #below: refactored in class
   def to_s
@@ -100,21 +63,12 @@ class LinkedList
   end
 
 
-
   #def []=(index, data)
       #current_node = @first_item
       #index.times { current_node=current_node.next_item }
       #current_node = data.to_s
   #end
 
-  #def []=(index, payload)
-    #tempVal = @first_item
-    #index.times do
-      #tempVal = tempVal.next_item
-    #end
-    #tempVal.payload = payload
-  #end
-  
   def delete(index)
     raise IndexError if @first_item.nil?
     current_node = @first_item
@@ -126,12 +80,4 @@ class LinkedList
     end
     @size -= 1
   end
-
-  #def delete(index)
-    #raise IndexError if @first_item.nil?
-    #if index == 0
-      #@first_item = @first_item.next_item
-    #end
-    #@size -= 1 
-  #end
 end
