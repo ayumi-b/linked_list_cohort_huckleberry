@@ -58,16 +58,16 @@ class LinkedList
   end
 
   #this seems to work, but would it be better long way?
-  def []=(index, payload)
-    get(index).replace payload
-  end
-
-
-  #def []=(index, data)
-      #current_node = @first_item
-      #index.times { current_node=current_node.next_item }
-      #current_node = data.to_s
+  #def []=(index, payload)
+    #get(index).replace payload
   #end
+
+
+  def []=(index, new_payload)
+      current_node = @first_item
+      index.times { current_node=current_node.next_item }
+  current_node.payload = new_payload
+  end
 
   def delete(index)
     raise IndexError if @first_item.nil?

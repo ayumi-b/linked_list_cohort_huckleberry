@@ -27,6 +27,10 @@ class LinkedListItem
     next_item.nil?
   end
 
+  def payload=(new_payload)
+    @payload = new_payload
+  end
+
   def <=> other
     if self.payload.class == other.payload.class
       self.payload <=> other.payload
