@@ -27,6 +27,12 @@ class LinkedList
 
 
   def index(value)
+    present_item = @first_item
+    if @size === 0
+      nil
+    else @first_item.payload.match(value)
+      0
+    end
   end
 
   def push(payload)
