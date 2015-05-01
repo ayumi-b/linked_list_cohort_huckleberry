@@ -27,12 +27,24 @@ class LinkedList
 
 
   def index(value)
-    present_item = @first_item
-    if @size === 0
+    current_node = @first_item
+    if @size === 0 || current_node.nil?
       nil
-    else @first_item.payload.match(value)
-      0
+      inc = nil
     end
+    #if current_node.nil?
+      #inc = nil
+    #else
+      inc = 0   # had to put counter in
+      until current_node.payload.match(value)
+        current_node = current_node.next_item
+        inc += 1
+        #if current_node.nil?
+          #inc = nil
+        #break   #not completely sure how this is working right now
+        #end
+      end
+    inc
   end
 
   def push(payload)

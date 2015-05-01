@@ -1,6 +1,6 @@
 class LinkedListItem
   include Comparable
-  attr_reader :payload, :next_item, :last
+  attr_accessor :payload, :next_item, :last
 
   def initialize(payload)
     @payload = payload
@@ -12,10 +12,10 @@ class LinkedListItem
     self.equal? other
   end
 
-  def next_item=(next_item)
-    raise ArgumentError if next_item == self
+  def next_item=(lli)
+    raise ArgumentError if self === lli
     # above works as a guard to check if valid
-    @next_item= next_item
+    @next_item= lli
   end
 
   def last?
